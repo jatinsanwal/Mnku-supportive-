@@ -1,11 +1,11 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>For Mnkuu 💖</title>
 
-<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&family=Dancing+Script:wght@700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Dancing+Script:wght@700&display=swap" rel="stylesheet">
 
 <style>
 
@@ -15,178 +15,40 @@ padding:0;
 box-sizing:border-box;
 }
 
-body{
-font-family:'Poppins',sans-serif;
-overflow:hidden;
-background:linear-gradient(135deg,#ffb6d9,#ffd6ea,#ffc2e2);
-height:100vh;
-color:white;
-}
-
-.page{
-position:absolute;
-width:100%;
-height:100vh;
-display:flex;
-justify-content:center;
-align-items:center;
-flex-direction:column;
-padding:30px;
-text-align:center;
-opacity:0;
-transform:translateX(100%);
-transition:1s;
-}
-
-.page.active{
-opacity:1;
-transform:translateX(0);
-z-index:2;
-}
-
-h1{
-font-size:3rem;
-margin-bottom:20px;
-font-family:'Dancing Script',cursive;
-text-shadow:0 0 15px rgba(255,255,255,0.8);
-animation:glow 2s infinite alternate;
-}
-
-p{
-font-size:1.2rem;
-max-width:800px;
-line-height:2;
-font-weight:500;
-text-shadow:0 0 10px rgba(255,255,255,0.4);
-}
-
-.big{
-font-size:2rem;
-margin-top:25px;
-font-weight:700;
-color:#fff;
-text-shadow:0 0 20px white;
-animation:pulse 2s infinite;
-}
-
-button{
-margin-top:40px;
-padding:15px 35px;
-border:none;
-border-radius:50px;
-font-size:1rem;
-font-weight:600;
-background:white;
-color:#ff4fa0;
-cursor:pointer;
-transition:0.4s;
-box-shadow:0 0 20px rgba(255,255,255,0.5);
-}
-
-button:hover{
-transform:scale(1.1);
-background:#ff4fa0;
-color:white;
-}
-
-.typing{
-border-right:3px solid white;
-white-space:nowrap;
-overflow:hidden;
-width:0;
-animation:typing 5s steps(50,end) forwards,
-blink .8s infinite;
-font-size:1.4rem;
-margin-bottom:30px;
-max-width:90%;
-}
-
-.hearts span{
-position:absolute;
-bottom:-100px;
-font-size:20px;
-animation:float 10s linear infinite;
-opacity:0.7;
-}
-
-.music-btn{
-position:absolute;
-top:20px;
-right:20px;
-z-index:100;
-}
-
-@keyframes float{
-0%{
-transform:translateY(0) rotate(0deg);
-opacity:0;
-}
-10%{
-opacity:1;
-}
-100%{
-transform:translateY(-120vh) rotate(360deg);
-opacity:0;
-}
-}
-
-@keyframes glow{
-from{
-text-shadow:0 0 10px white;
-}
-to{
-text-shadow:0 0 25px white,0 0 40px pink;
-}
-}
-
-@keyframes pulse{
-0%{
-transform:scale(1);
-}
-50%{
-transform:scale(1.05);
-}
-100%{
-transform:scale(1);
-}
-}
-
-@keyframes typing{
-from{
-width:0;
-}
-to{
-width:100%;
-}
-}
-
-@keyframes blink{
-50%{
-border-color:transparent;
-}
-}
-
-.open-screen{
-position:fixed;
+html,body{
 width:100%;
 height:100%;
-background:linear-gradient(135deg,#ff7eb3,#ff4fa0);
+overflow:hidden;
+font-family:'Poppins',sans-serif;
+background:linear-gradient(135deg,#ffc1dc,#ffd9ea,#ffcfe3);
+}
+
+/* OPENING SCREEN */
+
+.opening{
+position:fixed;
+inset:0;
+background:linear-gradient(135deg,#ff7eb3,#ff4f95);
 display:flex;
 justify-content:center;
 align-items:center;
 flex-direction:column;
-z-index:999;
+z-index:9999;
 animation:fadeOut 2s forwards;
 animation-delay:3s;
 }
 
-.open-screen h1{
+.opening h1{
 font-size:4rem;
+color:white;
+font-family:'Dancing Script',cursive;
+text-shadow:0 0 20px white;
 }
 
-.open-screen p{
-font-size:1.5rem;
-margin-top:20px;
+.opening p{
+margin-top:15px;
+font-size:1.2rem;
+color:white;
 }
 
 @keyframes fadeOut{
@@ -196,10 +58,198 @@ visibility:hidden;
 }
 }
 
-@media(max-width:768px){
+/* HEARTS */
+
+.hearts{
+position:fixed;
+top:0;
+left:0;
+width:100%;
+height:100%;
+pointer-events:none;
+overflow:hidden;
+z-index:1;
+}
+
+.hearts span{
+position:absolute;
+bottom:-100px;
+font-size:22px;
+animation:float linear forwards;
+opacity:0.8;
+}
+
+@keyframes float{
+
+0%{
+transform:translateY(0) rotate(0deg);
+opacity:0;
+}
+
+10%{
+opacity:1;
+}
+
+100%{
+transform:translateY(-120vh) rotate(360deg);
+opacity:0;
+}
+
+}
+
+/* PAGE */
+
+.page{
+position:absolute;
+inset:0;
+width:100%;
+height:100dvh;
+display:flex;
+justify-content:center;
+align-items:center;
+flex-direction:column;
+padding:25px;
+text-align:center;
+opacity:0;
+transform:translateX(100%);
+transition:1s ease;
+z-index:2;
+overflow:hidden;
+}
+
+.page.active{
+opacity:1;
+transform:translateX(0);
+}
+
+/* TEXT */
 
 h1{
-font-size:2.2rem;
+font-size:3rem;
+margin-bottom:25px;
+font-family:'Dancing Script',cursive;
+color:white;
+text-shadow:0 0 15px rgba(255,255,255,0.9);
+animation:glow 2s infinite alternate;
+}
+
+p{
+font-size:1.15rem;
+line-height:2;
+max-width:850px;
+color:white;
+font-weight:500;
+text-shadow:0 0 10px rgba(255,255,255,0.5);
+}
+
+.big{
+font-size:2rem;
+font-weight:700;
+margin-top:25px;
+color:white;
+line-height:1.5;
+text-shadow:0 0 20px white;
+animation:pulse 2s infinite;
+}
+
+.typing{
+font-size:1.2rem;
+margin-bottom:25px;
+max-width:90%;
+color:white;
+font-weight:600;
+overflow:hidden;
+border-right:3px solid white;
+white-space:nowrap;
+animation:
+typing 4s steps(45,end) forwards,
+blink .8s infinite;
+}
+
+/* BUTTON */
+
+button{
+margin-top:35px;
+padding:14px 34px;
+border:none;
+border-radius:50px;
+background:white;
+color:#ff4f95;
+font-size:1rem;
+font-weight:700;
+cursor:pointer;
+transition:.4s;
+box-shadow:0 0 20px rgba(255,255,255,0.6);
+}
+
+button:hover{
+transform:scale(1.08);
+background:#ff4f95;
+color:white;
+}
+
+/* ANIMATIONS */
+
+@keyframes glow{
+
+from{
+text-shadow:0 0 10px white;
+}
+
+to{
+text-shadow:0 0 25px white,
+0 0 40px pink;
+}
+
+}
+
+@keyframes pulse{
+
+0%{
+transform:scale(1);
+}
+
+50%{
+transform:scale(1.05);
+}
+
+100%{
+transform:scale(1);
+}
+
+}
+
+@keyframes typing{
+
+from{
+width:0;
+}
+
+to{
+width:100%;
+}
+
+}
+
+@keyframes blink{
+
+50%{
+border-color:transparent;
+}
+
+}
+
+/* MOBILE */
+
+@media(max-width:768px){
+
+.page{
+padding:20px;
+}
+
+h1{
+font-size:2.3rem;
+margin-bottom:20px;
 }
 
 p{
@@ -213,6 +263,14 @@ font-size:1.5rem;
 
 .typing{
 font-size:1rem;
+white-space:normal;
+border-right:none;
+animation:none;
+}
+
+button{
+padding:13px 28px;
+font-size:1rem;
 }
 
 }
@@ -222,22 +280,21 @@ font-size:1rem;
 
 <body>
 
-<div class="open-screen">
+<!-- OPENING -->
+
+<div class="opening">
 <h1>For Mnkuu 💌</h1>
 <p>A little surprise for your smile 🌸</p>
 </div>
 
-<audio id="music" loop>
-<source src="https://www.bensound.com/bensound-music/bensound-love.mp3" type="audio/mp3">
-</audio>
-
-<button class="music-btn" onclick="toggleMusic()">🎵 Music</button>
+<!-- HEARTS -->
 
 <div class="hearts"></div>
 
 <!-- PAGE 1 -->
 
-<div class="page active">
+<section class="page active">
+
 <h1>Hello Mnkuu 💖</h1>
 
 <div class="typing">
@@ -260,52 +317,56 @@ Please low feel मत करो... आपकी smile बहुत precious ह
 </div>
 
 <button onclick="nextPage()">Next ➜</button>
-</div>
+
+</section>
 
 <!-- PAGE 2 -->
 
-<div class="page">
+<section class="page">
+
 <h1>78% is GREAT ✨</h1>
 
 <p>
-सुनो... सच बताऊँ? 💗 <br><br>
+सुनो... सच बताऊँ? 💖 <br><br>
 
 इतने marks लेकर भी लोग बड़े बड़े government exams crack करते हैं 🌸 <br><br>
 
 आपके पास हर मौका है... हर opportunity है ✨ <br><br>
 
 अब बस आगे मेहनत करनी है... <br>
-खुद पे भरोसा रखना है 💖 <br><br>
+खुद पे भरोसा रखना है 💞 <br><br>
 
 क्योंकि future marksheet से नहीं... <br>
 मेहनत और consistency से बनता है 🌷
 </p>
 
 <div class="big">
-You are capable of MUCH more 💞
+You are capable of MUCH more 💖
 </div>
 
 <button onclick="nextPage()">Next ➜</button>
-</div>
+
+</section>
 
 <!-- PAGE 3 -->
 
-<div class="page">
+<section class="page">
+
 <h1>You Are Not Alone 🫂</h1>
 
 <p>
 घरवाले कभी कभी बोल देते हैं... <br>
-comparison भी करते हैं... 💔 <br><br>
+comparison भी करते हैं 💔 <br><br>
 
 लेकिन इसका मतलब ये नहीं कि आप कम हो 🌸 <br><br>
 
 मेरी family आपके साथ है... <br>
-मैं आपके साथ हूँ... 💖 <br><br>
+मैं आपके साथ हूँ 💞 <br><br>
 
 और आपकी family भी हमेशा आपके साथ रहेगी ✨ <br><br>
 
 Percentage चाहे कुछ भी हो... <br>
-आप हमेशा special रहोगी 💞
+आप हमेशा special रहोगी 💖
 </p>
 
 <div class="big">
@@ -313,11 +374,13 @@ WE ARE PROUD OF YOU 🌹
 </div>
 
 <button onclick="nextPage()">Next ➜</button>
-</div>
+
+</section>
 
 <!-- PAGE 4 -->
 
-<div class="page">
+<section class="page">
+
 <h1>Remember This? 🎮💗</h1>
 
 <p>
@@ -339,16 +402,18 @@ I’ll always stay beside you 💞
 </div>
 
 <button onclick="nextPage()">Last Page ➜</button>
-</div>
+
+</section>
 
 <!-- PAGE 5 -->
 
-<div class="page">
+<section class="page">
+
 <h1>I WILL ALWAYS BE WITH YOU ❤️</h1>
 
 <p>
 अब बस आगे बढ़ना है... <br>
-खूब मेहनत करनी है... 🌸 <br><br>
+खूब मेहनत करनी है 🌸 <br><br>
 
 Marks सिर्फ numbers होते हैं... <br>
 लेकिन आपकी value उससे कहीं ज्यादा है 💗 <br><br>
@@ -358,11 +423,12 @@ Marks सिर्फ numbers होते हैं... <br>
 </p>
 
 <div class="big">
-“Percentage बस result होता है… <br>
-लेकिन आप… मेरी favourite achievement हो 💖”
+Percentage बस result होता है... <br>
+लेकिन आप... मेरी favourite achievement हो 💖
 </div>
 
 <p style="margin-top:30px;">
+
 और हाँ... <br>
 अगली बार जब low feel हो ना... <br>
 ये website फिर से खोल लेना 🌸 <br><br>
@@ -372,13 +438,17 @@ Marks सिर्फ numbers होते हैं... <br>
 
 and remember... <br>
 आपकी smile किसी भी marksheet से ज्यादा खूबसूरत है ✨🌹
+
 </p>
 
-</div>
+</section>
 
 <script>
 
+/* PAGE CHANGE */
+
 let currentPage = 0;
+
 const pages = document.querySelectorAll(".page");
 
 function nextPage(){
@@ -388,51 +458,40 @@ pages[currentPage].classList.remove("active");
 currentPage++;
 
 if(currentPage < pages.length){
+
 pages[currentPage].classList.add("active");
-}
 
 }
 
-function createHearts(){
+}
 
-const hearts = document.querySelector(".hearts");
+/* FLOATING HEARTS */
 
-setInterval(()=>{
+const heartsContainer = document.querySelector(".hearts");
+
+function createHeart(){
 
 const heart = document.createElement("span");
 
 heart.innerHTML = Math.random() > 0.5 ? "💖" : "🌸";
 
-heart.style.left = Math.random()*100 + "vw";
+heart.style.left = Math.random() * 100 + "vw";
 
-heart.style.fontSize = Math.random()*20 + 15 + "px";
+heart.style.fontSize = Math.random() * 18 + 18 + "px";
 
-heart.style.animationDuration = Math.random()*5 + 5 + "s";
+heart.style.animationDuration = Math.random() * 5 + 6 + "s";
 
-hearts.appendChild(heart);
+heartsContainer.appendChild(heart);
 
 setTimeout(()=>{
+
 heart.remove();
+
 },10000);
 
-},300);
-
 }
 
-createHearts();
-
-function toggleMusic(){
-
-const music = document.getElementById("music");
-
-if(music.paused){
-music.play();
-}
-else{
-music.pause();
-}
-
-}
+setInterval(createHeart,300);
 
 </script>
 
